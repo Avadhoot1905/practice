@@ -18,6 +18,26 @@ plt.title('Salary vs Experience')
 plt.show()
 print('Coef:', model.coef_, 'Intercept:', model.intercept_)
 ```
+func:
+```
+import numpy as np
+
+def linear_regression(x, y):
+    x_mean = np.mean(x)
+    y_mean = np.mean(y)
+
+    num = np.sum((x - x_mean) * (y - y_mean))
+    den = np.sum((x - x_mean) ** 2)
+
+    b1 = num / den
+    b0 = y_mean - b1 * x_mean
+
+    return b0, b1
+
+# prediction
+def predict(x, b0, b1):
+    return b0 + b1 * x
+```
 
 Logistic regression:
 
@@ -35,6 +55,13 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 print('Accuracy:', accuracy_score(y_test, y_pred))
 print('Confusion Matrix:\n', confusion_matrix(y_test, y_pred))
+```
+
+func:
+
+```
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
 ```
 
 Preprocessing
